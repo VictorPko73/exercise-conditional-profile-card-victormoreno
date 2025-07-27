@@ -22,6 +22,8 @@ import "../style/index.css";
         city: null
     }
  */
+import "../style/index.css";
+
 function render(variables = {}) {
   console.log("These are the current variables: ", variables); // print on the console
   // here we ask the logical questions to make decisions on how to build the html
@@ -33,22 +35,19 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${variables.name || "Lucy"} ${variables.lastName || "Boilett"}</h1>
+          <h2>${variables.role || "Web Developer"}</h2>
+          <h3>${variables.city || "Miami"}, ${variables.country || "USA"}</h3>
+          <ul class="${variables.socialMediaPosition || "position-right"}">
+            <li><a href="https://twitter.com/${variables.twitter || "4geeksacademy"}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${variables.github || "4geeksacademy"}"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/school/${variables.linkedin || "4geeksacademy"}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${variables.instagram || "4geeksacademy"}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
 }
 
-/**
- * Don't change any of the lines below, here is where we do the logic for the dropdowns
- */
 window.onload = function() {
   window.variables = {
     // if includeCover is true the algorithm should show the cover image
